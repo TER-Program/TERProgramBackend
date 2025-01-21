@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        
+
 
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -39,6 +40,20 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
+
+        User::create([
+            'name' => 'A Tanár',
+            'email' => 'tanar@tanar.com',
+            'password' => 'Tanar123456',
+            'role' => 3
+        ]);
+
+        User::create([
+            'name' => 'Tér Felelős',
+            'email' => 'ter@ter.com',
+            'password' => 'Ter123456',
+            'role' => 2
+        ]);
     }
 
     /**

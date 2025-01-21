@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\PerformanceGoal;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,11 +19,15 @@ return new class extends Migration
             $table->string('document')->nullable();
             $table->string('name');
             $table->smallInteger('status')->default(0);
-            $table->integer('score');
-            $table->timestamp('start');
+            $table->integer('score')->default(0);
             $table->date('completed')->nullable();
             $table->timestamps();
         });
+        PerformanceGoal::create([
+            'teacher'=>'1',
+            'aspect_item'=>'1',
+            'name'=>'TanárCél',
+        ]);
     }
 
     /**
