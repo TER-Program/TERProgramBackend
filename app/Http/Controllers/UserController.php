@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -28,4 +30,13 @@ class UserController extends Controller
         return response()->json(["user" => $user]);
     }
 
+    public function role(){
+        $user = Auth::user();
+        $userId = $user->id;
+        $role = DB::table('users as u')
+        ->select('role')
+        ->where('u.id', $userId)
+        ->get();
+        return response()->json($role);
+    }
 }

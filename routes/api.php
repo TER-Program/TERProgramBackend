@@ -44,6 +44,6 @@ Route::middleware(['auth:sanctum', Teacher::class])
 ->group(function () {
 
     Route::get('/admin/users', [UserController::class, 'index']);
-
+    Route::get('/role', [UserController::class, 'role']);
 });
 
