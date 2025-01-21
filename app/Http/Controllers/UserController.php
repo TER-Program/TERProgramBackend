@@ -39,4 +39,8 @@ class UserController extends Controller
         ->get();
         return response()->json($role);
     }
+    public function destroy(string $id)
+    {
+        User::find($id)->delete();
+    }
 }

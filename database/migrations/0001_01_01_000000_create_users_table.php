@@ -54,6 +54,8 @@ return new class extends Migration
             'password' => 'Ter123456',
             'role' => 2
         ]);
+
+
     }
 
     /**
