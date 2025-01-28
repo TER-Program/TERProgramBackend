@@ -19,7 +19,7 @@ class UserController extends Controller
     public function updatePassword(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "password" => array( 'required', 'regex:/^[a-zA-Z]+\d*$/u')
+            "password" => array('required', 'regex:/^[a-zA-Z]+\d*$/u')
         ]);
         if ($validator->fails()) {
             return response()->json(["message" => $validator->errors()->all()], 400);
@@ -30,15 +30,32 @@ class UserController extends Controller
         return response()->json(["user" => $user]);
     }
 
-    public function role(){
+    public function role()
+    {
         $user = Auth::user();
         $userId = $user->id;
         $role = DB::table('users as u')
-        ->select('role')
-        ->where('u.id', $userId)
-        ->get();
+            ->select('role')
+            ->where('u.id', $userId)
+            ->get();
         return response()->json($role);
     }
+
+    public function setRole(string $id, int $role)
+    {
+        return DB::table('users')
+            ->where('id', $id)
+            ->update(['role' => $role]);
+    }
+
+    public function update(Request $request, string $id)
+    {
+        $record = User::find($id);
+        $record->fill($request->all());
+        $record->save();
+    }
+
+
     public function destroy(string $id)
     {
         User::find($id)->delete();
