@@ -50,6 +50,7 @@ Route::middleware(['auth:sanctum', Responsible::class])
 
 });
 
+Route::post('/newGoal', [PerformanceGoalController::class, 'store']);
 
 Route::middleware(['auth:sanctum', Teacher::class])
 ->group(function () {
