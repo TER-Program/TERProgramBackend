@@ -60,4 +60,12 @@ class UserController extends Controller
     {
         User::find($id)->delete();
     }
+
+    public function teachers(){
+        $teacher = DB::table('users')
+        ->select('*')
+        ->where('role','=', '2')
+        ->get();
+        return response()->json($teacher);
+    }
 }

@@ -37,4 +37,10 @@ class PerformanceGoalController extends Controller
         ->get();
         return response()->json($goals);
     }
+
+    public function score(string $id, int $score) {
+        return DB::table('performance_goals')
+            ->where('teacher', '=', $id)
+            ->update(['score' => $score]);
+    }
 }
