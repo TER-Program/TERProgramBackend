@@ -6,6 +6,7 @@ use App\Models\PerformanceGoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\FuncCall;
 
 class PerformanceGoalController extends Controller
 {
@@ -13,6 +14,7 @@ class PerformanceGoalController extends Controller
     {
         return PerformanceGoal::all();
     }
+
     public function store(Request $request)
     {
         $record = new PerformanceGoal();
@@ -54,5 +56,15 @@ class PerformanceGoalController extends Controller
         return DB::table('performance_goals')
             ->where('teacher', '=', $id)
             ->update(['score' => $score]);
+    }
+
+    public function scoreByTeacher() {
+        $result = DB::table('performance_goals')
+            ->join('users', 'users.id', '=', 'performance_goals.teacher')
+            ->select('users.name', DB::raw('SUM(performance_goals.score) as total_score'))
+            ->groupBy('users.name')
+            ->first();
+
+        return response()->json($result);
     }
 }

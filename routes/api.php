@@ -23,7 +23,7 @@ Route::get('/aspectItem', [AspectItemController::class, 'index']);
 Route::post('/comment',[CommentController::class, 'store']);
 Route::post('/newGoal', [PerformanceGoalController::class, 'store']);
 Route::get('/teachers', [UserController::class, 'teachers']);
-
+Route::get('/scorebyteacher', [PerformanceGoalController::class, 'scoreByTeacher']);
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
