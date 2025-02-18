@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('max_score');
             $table->longText('name');
             $table->longText('description');
+            $table->boolean('doc_required')->default(0);
             $table->timestamps();
         });
         AspectItem::create([

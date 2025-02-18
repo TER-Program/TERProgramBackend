@@ -8,11 +8,9 @@ class PerformanceGoal extends Model
 {
     protected $fillable = [
         'teacher',
+        'evaulator',
         'aspect_item',
-        'document',
-        'name',
-        'status',
         'score',
-        'completed'
+        'scored'
     ];
 }

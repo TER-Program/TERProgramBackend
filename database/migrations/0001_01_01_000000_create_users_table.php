@@ -20,6 +20,8 @@ return new class extends Migration
             //0: admin, 1: tér felelős, 2: pedagógus
             $table->smallInteger('role')->default(2);
             $table->timestamp('email_verified_at')->nullable();
+            $table->date('started')->nullable();
+            $table->date('ended')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
@@ -45,14 +47,16 @@ return new class extends Migration
             'name' => 'A Tanár',
             'email' => 'tanar@tanar.com',
             'password' => 'Tanar123456',
-            'role' => 3
+            'role' => 3,
+            'started' => '2025-01-01'
         ]);
 
         User::create([
             'name' => 'Tér Felelős',
             'email' => 'ter@ter.com',
             'password' => 'Ter123456',
-            'role' => 2
+            'role' => 2,
+            'started' => '2025-01-01'
         ]);
 
 
