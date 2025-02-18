@@ -24,7 +24,6 @@ Route::post('/comment',[CommentController::class, 'store']);
 Route::post('/newGoal', [PerformanceGoalController::class, 'store']);
 Route::get('/teachers', [UserController::class, 'teachers']);
 
-Route::post('/newDocument', [DocumentController::class, 'store']);
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
@@ -55,6 +54,7 @@ Route::middleware(['auth:sanctum', Responsible::class])
 
 Route::middleware(['auth:sanctum', Teacher::class])
 ->group(function () {
+    Route::post('/newDocument', [DocumentController::class, 'store']);
     Route::get('/getGoalsByUserId/{id}', [PerformanceGoalController::class, 'getGoalsById']);
     Route::get('/role', [UserController::class, 'role']);
     Route::get('/goals', [PerformanceGoalController::class, 'getGoals']);
