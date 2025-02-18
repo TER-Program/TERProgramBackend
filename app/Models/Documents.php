@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Documents extends Model
 {
     protected $fillable = [
-        'performanceGoal',
-        'text'
+        'documents',
+        'teacher assessment',
+        
     ];
 }
