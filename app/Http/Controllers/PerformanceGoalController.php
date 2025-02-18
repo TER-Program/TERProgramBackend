@@ -63,7 +63,7 @@ class PerformanceGoalController extends Controller
             ->join('users', 'users.id', '=', 'performance_goals.teacher')
             ->select('users.name', DB::raw('SUM(performance_goals.score) as total_score'))
             ->groupBy('users.name')
-            ->first();
+            ->get();
 
         return response()->json($result);
     }
