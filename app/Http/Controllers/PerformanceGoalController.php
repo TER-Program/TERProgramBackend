@@ -30,11 +30,23 @@ class PerformanceGoalController extends Controller
         return response()->json($goals);
     }
 
-    public function getGoalsById(string $id){
-        $goals= DB::table('performance_goals as u')
-        ->select('*')
-        ->where('teacher', $id)
-        ->get();
+    public function getGoalsById(string $id) {
+        $goals = DB::table('performance_goals as pg')
+            ->join('users as u', 'pg.teacher', '=', 'u.id')
+            ->join('aspect_items as ai', 'pg.aspect_item', '=', 'ai.id')
+            ->select(
+                'pg.*',
+                'u.name as teacher_name',
+                'u.email as teacher_email',
+                'u.role as teacher_role',
+                'ai.name as aspect_name',
+                'ai.description as aspect_description',
+                'ai.max_score',
+                'ai.doc_required'
+            )
+            ->where('pg.teacher', $id)
+            ->get();
+
         return response()->json($goals);
     }
 
