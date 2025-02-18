@@ -10,7 +10,7 @@ class AspectItem extends Model
         'aspect',
         'max_score',
         'name',
-        'description'
-
+        'description',
+        'doc_required'
     ];
 }

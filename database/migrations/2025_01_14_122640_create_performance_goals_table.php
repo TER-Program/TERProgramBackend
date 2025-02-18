@@ -16,18 +16,16 @@ return new class extends Migration
         Schema::create('performance_goals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('teacher')->references('id')->on('users');
+            $table->foreignId('evaluator')->references('id')->on('users');
             $table->foreignId('aspect_item')->references('id')->on('aspect_items');
-            $table->string('document')->nullable();
-            $table->string('name');
-            $table->smallInteger('status')->default(0);
             $table->integer('score')->default(0);
-            $table->date('completed')->nullable();
+            $table->date('scored')->nullable();
             $table->timestamps();
         });
         PerformanceGoal::create([
             'teacher'=>'1',
+            'evaluator' => '2',
             'aspect_item'=>'1',
-            'name'=>'TanárCél',
         ]);
 
     }

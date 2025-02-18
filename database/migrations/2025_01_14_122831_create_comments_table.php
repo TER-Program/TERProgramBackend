@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user')->references('id')->on('users');
+            $table->timestamp('date');
+            $table->primary('date');
             $table->foreignId('performanceGoal')->references('id')->on('performance_goals');
             $table->string('text');
             $table->timestamps();
