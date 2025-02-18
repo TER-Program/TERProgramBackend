@@ -59,7 +59,13 @@ return new class extends Migration
             'started' => '2025-01-01'
         ]);
 
-
+        User::create([
+            'name' => 'Admin',
+            'email' => 'admin@admin.com',
+            'password' => 'Admin123456',
+            'role' => 2,
+            'started' => '2025-01-01'
+        ]);
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Comment;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,13 +13,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->timestamp('date');
-            $table->primary('date');
+            $table->id();
             $table->foreignId('performanceGoal')->references('id')->on('performance_goals');
             $table->string('text');
             $table->timestamps();
         });
+        Comment::create([
+            'performanceGoal' => 1,
+            'text' => 'jó'
+        ]);
     }
+
 
     /**
      * Reverse the migrations.
