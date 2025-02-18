@@ -47,7 +47,7 @@ return new class extends Migration
             'name' => 'A Tanár',
             'email' => 'tanar@tanar.com',
             'password' => 'Tanar123456',
-            'role' => 3,
+            'role' => 2,
             'started' => '2025-01-01'
         ]);
 
@@ -55,7 +55,7 @@ return new class extends Migration
             'name' => 'Tér Felelős',
             'email' => 'ter@ter.com',
             'password' => 'Ter123456',
-            'role' => 2,
+            'role' => 1,
             'started' => '2025-01-01'
         ]);
 
@@ -63,7 +63,7 @@ return new class extends Migration
             'name' => 'Admin',
             'email' => 'admin@admin.com',
             'password' => 'Admin123456',
-            'role' => 2,
+            'role' => 0,
             'started' => '2025-01-01'
         ]);
     }

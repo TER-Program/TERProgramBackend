@@ -8,6 +8,6 @@ class Documents extends Model
 {
     protected $fillable = [
         'documents',
-        'teacher assessment',
+        'performanceGoal',
     ];
 }
