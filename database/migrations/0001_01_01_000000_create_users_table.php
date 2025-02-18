@@ -20,7 +20,7 @@ return new class extends Migration
             //0: admin, 1: tér felelős, 2: pedagógus
             $table->smallInteger('role')->default(2);
             $table->timestamp('email_verified_at')->nullable();
-            $table->date('started')->nullable();
+            $table->date('started');
             $table->date('ended')->nullable();
             $table->rememberToken();
             $table->timestamps();
