@@ -1,0 +1,295 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "ter",
+    "collectionId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+    "dateExported": "2025-02-25T08:05:07.118Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "89167335-be76-42a4-9174-a0993eba4e98",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "regisztracio",
+            "url": "/register?name=Gyuszi&email=email@email.com&password=Gyuszi123456",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2025-01-14T10:18:25.359Z",
+            "modified": "2025-01-14T13:07:57.108Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "name",
+                    "value": "Gyuszi",
+                    "isPath": false
+                },
+                {
+                    "name": "email",
+                    "value": "email@email.com",
+                    "isPath": false
+                },
+                {
+                    "name": "password",
+                    "value": "Gyuszi123456",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "5f05f876-4616-4889-99f5-fce334a1388d",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "logout",
+            "url": "/logout",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2025-01-14T13:16:01.617Z",
+            "modified": "2025-01-21T09:48:47.284Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|bL9VCdhoTTTsH0VXjSno97QevOgyshQBYYNlPXuJ06797946"
+            }
+        },
+        {
+            "_id": "a1d04daa-cd77-45bb-9ca3-08ca040b9838",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "getUsers",
+            "url": "/admin/users",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2025-01-14T13:20:00.007Z",
+            "modified": "2025-01-28T12:30:09.904Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "5474rzu6uzru47u4u4zg4ezrut6ie56i5i5665"
+            }
+        },
+        {
+            "_id": "fc62123e-1797-49e2-b25b-6a55d9a31908",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "getSzempontok",
+            "url": "/aspects",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2025-01-21T07:58:51.044Z",
+            "modified": "2025-01-21T07:59:06.355Z",
+            "headers": []
+        },
+        {
+            "_id": "63a7c969-98d2-43a5-9e8c-7268d54309f9",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "getCelok",
+            "url": "/performanceGoals",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2025-01-21T08:01:18.747Z",
+            "modified": "2025-01-21T09:49:17.802Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "2|mPdbDKGxycIedo6GRX6iG8zLKCBw7lUVH827zJ6z5db6b901"
+            }
+        },
+        {
+            "_id": "d6351b78-b249-4d2b-bcfe-90868dafb013",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "login",
+            "url": "/login?email=tanar@tanar.com&password=Tanar123456",
+            "method": "POST",
+            "sortNum": 90000,
+            "created": "2025-01-21T09:46:29.050Z",
+            "modified": "2025-02-04T12:18:55.055Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "email",
+                    "value": "tanar@tanar.com",
+                    "isPath": false
+                },
+                {
+                    "name": "password",
+                    "value": "Tanar123456",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "3165206f-8436-4b1a-80da-5eadced58445",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "ujCel",
+            "url": "/newGoal",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2025-01-21T10:17:35.512Z",
+            "modified": "2025-02-04T14:56:34.722Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"teacher\":\"1\",\n  \"aspect_item\":\"2\",\n  \"name\":\"Cél2\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|pbbUmlXSn9s4ExSvDqLcBs69JM0fWoinn8AchdOC1a1a8781"
+            }
+        },
+        {
+            "_id": "a6de12bd-3e29-406f-b8df-32fdbaa36958",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "comment",
+            "url": "/comment",
+            "method": "POST",
+            "sortNum": 110000,
+            "created": "2025-01-21T10:49:30.390Z",
+            "modified": "2025-01-21T10:51:30.911Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"user\":\"2\",\n  \"performanceGoal\":\"1\",\n  \"text\":\"Szuper lett!\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "e725c5bf-03a5-44f0-a1d6-6c0596ec308f",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "getRole",
+            "url": "/role",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2025-01-21T12:40:00.194Z",
+            "modified": "2025-01-21T12:40:15.121Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "3|pbbUmlXSn9s4ExSvDqLcBs69JM0fWoinn8AchdOC1a1a8781"
+            }
+        },
+        {
+            "_id": "6b60f0c6-3755-49d0-93fa-1a11a550cc21",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "deleteUser",
+            "url": "/deleteUser/4",
+            "method": "DELETE",
+            "sortNum": 130000,
+            "created": "2025-01-21T14:47:35.899Z",
+            "modified": "2025-01-21T15:06:55.466Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "9|wrs7uDus9D3z4gMviuZiYIZGUN4BpWRs7s0Dkgcofc62ce5b"
+            }
+        },
+        {
+            "_id": "16fb5467-b079-4e12-ac36-229969874fef",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "getGoals",
+            "url": "/goals",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2025-01-28T09:14:10.722Z",
+            "modified": "2025-02-04T12:19:05.453Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "6|ZsMXTfCYS5l4xWQslnpwxYu5ICRikNqclXSWxxX3b23b1612"
+            }
+        },
+        {
+            "_id": "61a4b711-20da-4f0c-99de-53d57a5f337c",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "getGoalsByUserId",
+            "url": "/getGoalsByUserId/1",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2025-01-28T13:32:17.397Z",
+            "modified": "2025-01-28T13:33:04.893Z",
+            "headers": []
+        },
+        {
+            "_id": "ea67d5b8-eddf-4de4-82de-bfb07865cf80",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "setRole",
+            "url": "/setRole/1,1",
+            "method": "POST",
+            "sortNum": 160000,
+            "created": "2025-01-28T13:56:49.959Z",
+            "modified": "2025-01-28T14:45:05.249Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "10|25MqCAJPymwllCFx203SDY6jXsGy2N28PZf0apGz05919b71"
+            }
+        },
+        {
+            "_id": "52fd0d26-55ca-4f40-ae60-842402dbcd18",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "updateUser",
+            "url": "/updateUser/1?name=bambok&email=bambok@bambok.hu&role=2",
+            "method": "PUT",
+            "sortNum": 170000,
+            "created": "2025-01-28T14:04:50.207Z",
+            "modified": "2025-01-28T14:48:59.864Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "name",
+                    "value": "bambok",
+                    "isPath": false
+                },
+                {
+                    "name": "email",
+                    "value": "bambok@bambok.hu",
+                    "isPath": false
+                },
+                {
+                    "name": "role",
+                    "value": "2",
+                    "isPath": false
+                }
+            ]
+        },
+        {
+            "_id": "70a45941-e0a1-4264-8caa-ea732ac26812",
+            "colId": "cbc92658-9269-4140-b3df-26cf8d8c1a9c",
+            "containerId": "",
+            "name": "score",
+            "url": "/score/1/8",
+            "method": "PUT",
+            "sortNum": 180000,
+            "created": "2025-02-04T13:17:50.223Z",
+            "modified": "2025-02-04T13:23:05.728Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"score\":8\n}",
+                "form": []
+            }
+        }
+    ],
+    "settings": {
+        "headers": [
+            {
+                "name": "Accept",
+                "value": "application/json"
+            }
+        ],
+        "options": {
+            "baseUrl": "http://localhost:8000/api"
+        }
+    },
+    "ref": "stij0I6d7CTTTcsDrvEYUCm1fcnXkBkZz6rszXIe6ait0Mi3GZXz7Msp-ZP5mo8OkBh7_gdjVy68NTlDP9a9Vg"
+}

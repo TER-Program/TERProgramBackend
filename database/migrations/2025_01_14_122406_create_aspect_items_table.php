@@ -90,6 +90,144 @@ hozzájárul az intézményi, vagy tágabb értelemben (helyi, regionális,
 országos szinten) a pedagógiai munka minőségének fejlesztéséhez.'
         ]);
 
+        AspectItem::create([
+            'aspect' => '2',
+            'max_score' => 3,
+            'name' => 'Éves tartalmi tervezés, napi
+tervezés.
+                    ',
+            'description' => 'Az adott tanulócsoport jellemzőinek ismerete alapján a tanulócsoport és az egyes tanulók eltérő képességeire, szociokulturális
+helyzetére figyelemmel készít tanmenetet, foglalkozási tervet. Óráira
+felkészül, témavázlatot és/vagy óratervet készít, és ezek ütemezése
+alapján halad a tanítással, óravezetése, napi szakmai tevékenysége
+tervszerűen felépített. (Több tantárgy tanítása esetén több pont.)'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '2',
+            'max_score' => 3,
+            'name' => 'Többletfeladatok, különböző megbízások vállalása.
+                    ',
+            'description' => 'Osztályfőnök, munkaközösség-vezető, DÖK munkáját segítő
+pedagógus, ÖTM tagja, eseti vagy állandó munkacsoport tagja,
+pályázatfigyelő, pályázatíró, mentorálja a végzős hallgatókat/gyakornokot, mesterpedagógusként, kutatótanárként intézményfejlesztési
+feladatokat vállal, támogatja az intézmény, a pedagógusok munkáját.
+(Több megbízatás esetén több pont.)'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '2',
+            'max_score' => 3,
+            'name' => 'Az intézményen belüli szabadidős programok szervezése
+                    ',
+            'description' => 'Iskolai szabadidős programokat szervez és/vagy megvalósításában
+aktívan részt vesz tanulói közösségével, azokat dokumentálja (forgatókönyv, beszámoló, elégedettségmérés/értékelés stb.). Az intézményi hagyományok ápolásában tevékenyen vesz részt.'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '2',
+            'max_score' => 3,
+            'name' => 'Az intézményen kívüli
+programokban való részvétel (projektek, táborok,
+tanulmányi utak, múzeumés színházlátogatás stb.)
+                    ',
+            'description' => 'Iskolán kívüli programokat kezdeményez, szervez, tájékoztatja
+a tanulókat az iskolán kívüli programokról. Önálló feladatot vállal
+a programok megvalósítása során, vagy a programok megvalósításában aktívan részt vesz.
+'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '3',
+            'max_score' => 2,
+            'name' => 'A pedagógus szabályés normakövető magatartása
+                    ',
+            'description' => 'A pedagógus foglalkoztatással kapcsolatos irányadó ágazati jogszabályokban rá vonatkozó rendelkezéseket ismeri és követi, az SZMSZ
+és Házirend szabályait, a munkaköri leírásában foglaltakat maradéktalanul betartja.
+A tanügyi dokumentumokkal, vizsgákkal összefüggő adminisztrációs feladatokat – a feladatköréhez kapcsolódóan – szakszerűen,
+pontosan, határidőre elvégzi.
+'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '3',
+            'max_score' => 3,
+            'name' => 'Haladási napló vezetése
+                    ',
+            'description' => 'Az e-naplóban tantárgyához, foglalkozásaihoz kapcsolódóan naprakészen vezeti az előrehaladást, illetve a tanulók késését, hiányzását..
+'
+        ]);
+
+
+        AspectItem::create([
+            'aspect' => '3',
+            'max_score' => 3,
+            'name' => 'A tanulók értékelésével öszszefüggő adminisztrációs
+tevékenység
+                    ',
+            'description' => 'Szóbeli, írásbeli és egyéb a tanuló által készített produktumokat folyamatosan, az intézményi belső szabályzókban meghatározott időtartamon belül értékeli, a tanulóknak megfelelő számú érdemjegyet,
+értékelést ad/ szöveges értékelését az előírt módon vezeti.
+'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '4',
+            'max_score' => 3,
+            'name' => 'Nevelőtestületi, szakmai
+munkaközösségi tevékenységekben való részvétel,
+együttműködés szakmai
+partnerekkel
+                    ',
+            'description' => 'Konstruktív, építő jelleggel részt vesz a nevelőtestületi értekezleteken, hozzászólásokkal, pedagógiai jellegű előadások tartásával (pl.
+nevelési értekezleten) segíti a testület munkáját. Aktívan közreműködik a szakmai munkaközössége éves programjainak tervezésében,
+szervezésében, megvalósításában, értékelésében. Törekszik arra,
+hogy naprakész információval rendelkezzen, az információk átadásában és fogadásában mindig szakszerű és objektív.
+Munkavégzése során kezdeményezően együttműködik a pedagógustársaival, szakmai partnerekkel (pl. iskolapszichológus, pedagógiai szakszolgálat munkatársai, szociális segítő, iskolaorvos, családsegítő stb.)
+Nyitottság, szakmai kihívások megoldásában való aktivitás jellemzi.
+
+'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '4',
+            'max_score' => 3,
+            'name' => 'Kapcsolattartás és kommunikáció a szülőkkel/törvényes képviselőkkel
+                    ',
+            'description' => 'A szülői értekezleteket, fogadó órákat hiánytalanul megtartja. A szülőket/törvényes képviselőket igény szerint szakszerűen, közérthetően és objektíven tájékoztatja, velük a folyamatos együttműködésre
+való törekvés jellemzi.
+'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '6',
+            'max_score' => 2,
+            'name' => 'Motiváció, elkötelezettség
+                    ',
+            'description' => 'Szakmai tudását folyamatos megújítja, módszertani kultúráját fejleszti, beépíti a mindennapi pedagógiai gyakorlatba. Fontos számára
+az erősségeinek és fejleszthető területeinek önértékeléssel történő
+rendszeres meghatározása. Elkötelezett az intézmény küldetése, céljai és a pedagógiai program iránt, a megvalósításban kezdeményező
+szerepet vállal.
+'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '6',
+            'max_score' => 2,
+            'name' => 'A szervezet képviselete
+                    ',
+            'description' => 'Külső és belső fórumokon, programokon eredményesen képviseli
+és menedzseli az intézmény érdekeit, öregbíti az intézmény jó hírnevét.
+'
+        ]);
+
+        AspectItem::create([
+            'aspect' => '6',
+            'max_score' => 2,
+            'name' => 'Etikus magatartás
+                    ',
+            'description' => 'A rá vonatkozó pedagógus etikai szabályok szerinti normákat követi, betartja
+'
+        ]);
     }
 
     /**
