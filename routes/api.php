@@ -36,6 +36,7 @@ Route::middleware(['auth:sanctum', Admin::class])
     Route::get('/admin/users', [UserController::class, 'index']);
     Route::delete('/deleteUser/{id}', [UserController::class, 'destroy']);
     Route::post('/setRole/{id},{role}', [UserController::class, 'setRole']);
+    Route::post('/performace_goals_fill/{id}', [PerformanceGoalController::class, 'performanceGoalFill']);
 });
 
 
