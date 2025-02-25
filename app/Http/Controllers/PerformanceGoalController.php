@@ -59,10 +59,11 @@ class PerformanceGoalController extends Controller
     }
 
     public function scoreByTeacher() {
-        $result = DB::table('performance_goals')
-            ->join('users', 'users.id', '=', 'performance_goals.teacher')
-            ->select('users.name', DB::raw('SUM(performance_goals.score) as total_score'))
-            ->groupBy('users.name')
+        $result = DB::table('users')
+            ->leftJoin('performance_goals', 'performance_goals.teacher', '=', 'users.id')
+            ->where('users.role', 2)
+            ->select('users.id', 'users.name', DB::raw('SUM(performance_goals.score) as total_score'))
+            ->groupBy('users.id', 'users.name')
             ->get();
 
         return response()->json($result);
