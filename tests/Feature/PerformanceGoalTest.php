@@ -11,7 +11,7 @@ class PerformanceGoalTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function test_example(): void
+    public function test_performance_goal(): void
     {
         $user = User::factory()->create();
         $response = $this->actingAs($user, 'web')->get('/api/performanceGoals');
