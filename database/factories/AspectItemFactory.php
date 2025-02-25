@@ -21,11 +21,11 @@ class AspectItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'aspect' => Aspect::factory(), // Létrehoz egy kapcsolódó Aspect modellt
-            'max_score' => 10, // Fix max pontszám
-            'name' => 'Értékelési Kritérium', // Fix név
-            'description' => 'Ez egy előre definiált leírás.', // Fix leírás
-            'doc_required' => false, // Dokumentáció nem kötelező
+            'aspect' => Aspect::factory(),
+            'max_score' => 10,
+            'name' => 'Értékelési Kritérium',
+            'description' => 'Ez egy előre definiált leírás.',
+            'doc_required' => false,
         ];
     }
 }
