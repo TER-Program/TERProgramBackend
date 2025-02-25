@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::put('/updateUser/{id}', [UserController::class, 'update']);
+
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
 Route::post('/comment',[CommentController::class, 'store']);
 Route::post('/newGoal', [PerformanceGoalController::class, 'store']);
@@ -41,6 +41,7 @@ Route::middleware(['auth:sanctum', Admin::class])
     Route::get('/admin/users', [UserController::class, 'index']);
     Route::delete('/deleteUser/{id}', [UserController::class, 'destroy']);
     Route::post('/setRole/{id},{role}', [UserController::class, 'setRole']);
+    Route::put('/updateUser/{id}', [UserController::class, 'update']);
 });
 
 
