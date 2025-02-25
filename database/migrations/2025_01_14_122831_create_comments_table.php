@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('text');
             $table->timestamps();
         });
-        Comment::create([
-            'performanceGoal' => 1,
-            'text' => 'jó'
-        ]);
+        // Comment::create([
+        //     'performanceGoal' => 1,
+        //     'text' => 'jó'
+        // ]);
     }
 
 

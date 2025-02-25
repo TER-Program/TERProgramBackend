@@ -11,6 +11,6 @@ class PerformanceGoal extends Model
         'evaluator' ,
         'aspect_item',
         'score',
-        'scored' 
+        'scored'
     ];
 }

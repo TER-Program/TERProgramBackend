@@ -67,4 +67,16 @@ class PerformanceGoalController extends Controller
 
         return response()->json($result);
     }
+    public function performanceGoalFill(int $teacherId ) {
+        $aspectItems = DB::table('aspect_items')->pluck('id');
+        $insertData = $aspectItems->map(function ($aspectItemId) use ($teacherId) {
+            return [
+                'teacher' => $teacherId,
+                'aspect_item' => $aspectItemId
+            ];
+        })->toArray();
+
+        DB::table('performance_goals')->insert($insertData);
+    }
+
 }

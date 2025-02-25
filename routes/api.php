@@ -35,6 +35,7 @@ Route::post('/login',[AuthenticatedSessionController::class, 'store']);
 Route::delete('/logout', [AuthenticatedSessionController::class, 'destroy']);
 Route::post('/comment', [CommentController::class, 'store']);
 
+Route::post('/performace_goals_fill/{id}', [PerformanceGoalController::class, 'performanceGoalFill']);
 
 Route::middleware(['auth:sanctum', Admin::class])
 ->group(function () {
