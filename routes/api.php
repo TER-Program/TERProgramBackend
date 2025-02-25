@@ -18,13 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::put('/updateUser/{id}', [UserController::class, 'update']);
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
-Route::post('/comment',[CommentController::class, 'store']);
-Route::post('/newGoal', [PerformanceGoalController::class, 'store']);
-Route::get('/teachers', [UserController::class, 'teachers']);
-Route::get('/scorebyteacher', [PerformanceGoalController::class, 'scoreByTeacher']);
-
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -33,15 +27,16 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 Route::post('/register',[RegisteredUserController::class, 'store']);
 Route::post('/login',[AuthenticatedSessionController::class, 'store']);
 Route::delete('/logout', [AuthenticatedSessionController::class, 'destroy']);
-Route::post('/comment', [CommentController::class, 'store']);
 
-Route::post('/performace_goals_fill/{id}', [PerformanceGoalController::class, 'performanceGoalFill']);
+
 
 Route::middleware(['auth:sanctum', Admin::class])
 ->group(function () {
+    Route::put('/updateUser/{id}', [UserController::class, 'update']);
     Route::get('/admin/users', [UserController::class, 'index']);
     Route::delete('/deleteUser/{id}', [UserController::class, 'destroy']);
     Route::post('/setRole/{id},{role}', [UserController::class, 'setRole']);
+    Route::post('/performace_goals_fill/{id}', [PerformanceGoalController::class, 'performanceGoalFill']);
 });
 
 
@@ -50,6 +45,9 @@ Route::middleware(['auth:sanctum', Responsible::class])
     Route::get('/performanceGoals', [PerformanceGoalController::class, 'index']);
     Route::put('/score/{id}/{score}', [PerformanceGoalController::class, 'score']);
     Route::get('/aspects', [AspectController::class, 'index']);
+    Route::get('/scorebyteacher', [PerformanceGoalController::class, 'scoreByTeacher']);
+    Route::post('/comment', [CommentController::class, 'store']);
+    Route::get('/teachers', [UserController::class, 'teachers']);
 });
 
 
@@ -59,4 +57,5 @@ Route::middleware(['auth:sanctum', Teacher::class])
     Route::get('/getGoalsByUserId/{id}', [PerformanceGoalController::class, 'getGoalsById']);
     Route::get('/role', [UserController::class, 'role']);
     Route::get('/goals', [PerformanceGoalController::class, 'getGoals']);
+
 });
