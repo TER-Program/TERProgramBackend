@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->string('documents');
-            $table->primary('documents');
+            $table->id();
+            $table->string('document_name');
+            $table->string('document_path');
             $table->foreignId('performanceGoal')->references('id')->on('performance_goals');
             $table->timestamps();
-
         });
     }
 
