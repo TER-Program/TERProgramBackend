@@ -21,6 +21,7 @@ class PerformanceGoalController extends Controller
             ->join('users as teacher', 'performance_goals.teacher', '=', 'teacher.id') // INNER JOIN users for teacher
     
             ->select(
+                'performance_goals.id',
                 'performance_goals.score', // Pontszám
                 'performance_goals.scored', // Értékelés dátuma
                 'aspect_items.name as aspect_name', // Szempont neve
