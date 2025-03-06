@@ -14,6 +14,24 @@ class PerformanceGoalController extends Controller
     {
         return PerformanceGoal::all();
     }
+    public function getPerfomanceGoals() {
+        // Lekérdezés a három táblával
+        $results = DB::table('performance_goals')
+            ->join('aspect_items', 'performance_goals.aspect_item', '=', 'aspect_items.id') // INNER JOIN aspect_items
+            ->join('users as teacher', 'performance_goals.teacher', '=', 'teacher.id') // INNER JOIN users for teacher
+    
+            ->select(
+                'performance_goals.score', // Pontszám
+                'performance_goals.scored', // Értékelés dátuma
+                'aspect_items.name as aspect_name', // Szempont neve
+                'aspect_items.max_score', // Maximális pontszám
+                'teacher.name as teacher_name', // Tanár neve
+            )
+            ->get();
+    
+        // Válasz visszaadása JSON formátumban
+        return response()->json($results);
+    }
 
     public function store(Request $request)
     {

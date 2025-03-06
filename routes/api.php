@@ -42,7 +42,7 @@ Route::middleware(['auth:sanctum', Admin::class])
 
 Route::middleware(['auth:sanctum', Responsible::class])
 ->group(function () {
-    Route::get('/performanceGoals', [PerformanceGoalController::class, 'index']);
+    Route::get('/performanceGoals', [PerformanceGoalController::class, 'getPerfomanceGoals']);
     Route::put('/score/{id}/{score}', [PerformanceGoalController::class, 'score']);
     Route::get('/aspects', [AspectController::class, 'index']);
     Route::get('/scorebyteacher', [PerformanceGoalController::class, 'scoreByTeacher']);

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->integer('score')->default(0);
             $table->date('scored')->nullable();
             $table->timestamps();
-
             $table->foreign('evaluator')->references('id')->on('users');
         });
 
