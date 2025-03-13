@@ -16,9 +16,11 @@ use App\Models\PerformanceGoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/upload-pdf', [DocumentController::class, 'store']);
+
+Route::get('/documentbyid/{id}', [DocumentController::class, 'getDocumentumById']);
 
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
+
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -57,5 +59,5 @@ Route::middleware(['auth:sanctum', Teacher::class])
     Route::get('/getGoalsByUserId/{id}', [PerformanceGoalController::class, 'getGoalsById']);
     Route::get('/role', [UserController::class, 'role']);
     Route::get('/goals', [PerformanceGoalController::class, 'getGoals']);
-
+    Route::post('/upload-pdf', [DocumentController::class, 'store']);
 });
