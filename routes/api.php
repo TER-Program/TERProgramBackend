@@ -16,7 +16,7 @@ use App\Models\PerformanceGoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
+Route::post('/upload-pdf', [DocumentController::class, 'store']);
 
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
