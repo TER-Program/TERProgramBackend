@@ -13,7 +13,23 @@ class DocumentController extends Controller
     {
         return Documents::all();
     }
-
+    public function destroy($id)
+    {
+        $document = DB::table('documents')->where('id', $id)->first();
+    
+        if (!$document) {
+            return response()->json(['message' => 'Document not found'], 404);
+        }
+        $filePath = public_path('storage/' . $document->document_path);
+    
+        if (file_exists($filePath)) {
+            unlink($filePath);
+        }
+    
+        DB::table('documents')->where('id', $id)->delete();
+    
+        return response()->json(['message' => 'Document deleted successfully'], 200);
+    }
 
     public function store(Request $request)
     {
@@ -47,6 +63,16 @@ class DocumentController extends Controller
             ->join('users as u', 'p.teacher', '=', 'u.id')
             ->join('aspect_items as ai', 'p.aspect_item', '=', 'ai.id')
             ->where('p.teacher', '=', $teacherId)
+            ->select('u.name as teacher_name', 'ai.name as aspect_item_name', 'd.document_name', 'd.document_path', 'd.id')
+            ->get();
+        return response()->json($documents);
+    }
+    public function getDocumentum()
+    {
+        $documents = DB::table('documents as d')
+            ->join('performance_goals as p', 'd.performanceGoal', '=', 'p.id')
+            ->join('users as u', 'p.teacher', '=', 'u.id')
+            ->join('aspect_items as ai', 'p.aspect_item', '=', 'ai.id')
             ->select('u.name as teacher_name', 'ai.name as aspect_item_name', 'd.document_name', 'd.document_path', 'd.id')
             ->get();
         return response()->json($documents);
