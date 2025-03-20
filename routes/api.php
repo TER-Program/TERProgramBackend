@@ -49,7 +49,7 @@ Route::middleware(['auth:sanctum', Responsible::class])
         Route::get('/scorebyteacher', [PerformanceGoalController::class, 'scoreByTeacher']);
         Route::post('/comment', [CommentController::class, 'store']);
         Route::get('/teachers', [UserController::class, 'teachers']);
-        Route::get('/document}', [DocumentController::class, 'getDocumentum']);
+        Route::get('/document', [DocumentController::class, 'getDocumentum']);
     });
 
 
