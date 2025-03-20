@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/documentbyid/{id}', [DocumentController::class, 'getDocumentumById']);
-
+Route::get('/documents/{documentId}', [DocumentController::class, 'getDocumentFile']);
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {

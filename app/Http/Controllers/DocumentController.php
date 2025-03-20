@@ -47,9 +47,21 @@ class DocumentController extends Controller
             ->join('performance_goals as p', 'd.performanceGoal', '=', 'p.id')
             ->join('users as u', 'p.teacher', '=', 'u.id')
             ->join('aspect_items as ai', 'p.aspect_item', '=', 'ai.id')
-            ->where('p.teacher', '=', $teacherId) // Teacher ID szűrése
-            ->select('u.name as teacher_name', 'ai.name as aspect_item_name', 'd.document_name', 'd.document_path')
+            ->where('p.teacher', '=', $teacherId)
+            ->select('u.name as teacher_name', 'ai.name as aspect_item_name', 'd.document_name', 'd.document_path', 'd.id')
             ->get();
         return response()->json($documents);
+    }
+    public function getDocumentFile($documentId)
+    {
+        $document = DB::table('documents')->where('id', $documentId)->first();
+        if (!$document) {
+            return response()->json(['message' => 'Document not found'], 404);
+        }
+        $path = public_path('storage/' . $document->document_path);
+        if (!file_exists($path)) {
+            return response()->json(['message' => 'File not found'], 404);
+        }
+        return response()->download($path, $document->document_name);
     }
 }
