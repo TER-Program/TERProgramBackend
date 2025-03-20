@@ -42,7 +42,6 @@ class DocumentController extends Controller
     }
     public function getDocumentumById($teacherId)
     {
-
         $documents = DB::table('documents as d')
             ->join('performance_goals as p', 'd.performanceGoal', '=', 'p.id')
             ->join('users as u', 'p.teacher', '=', 'u.id')
