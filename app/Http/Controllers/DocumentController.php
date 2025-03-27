@@ -33,7 +33,6 @@ class DocumentController extends Controller
 
     public function store(Request $request)
     {
-        \Log::info('Request data:', $request->all());
         $request->validate([
             'pdf' => 'required|file|mimes:pdf|max:10240', // A fájl max 10MB
             'performanceGoal' => 'required|exists:performance_goals,id', // A performanceGoal ID validálása

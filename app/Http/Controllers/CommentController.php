@@ -27,4 +27,17 @@ class CommentController extends Controller
                 'created_at' => now()
             ]);
     }
+    public function getCommentById(int $id){
+        $sql = DB::table('comments as c')
+        ->join('users as u', 'c.evaluator', '=', 'u.id')
+        ->select(
+            'u.name as name',
+            'c.text as text',
+            'c.created_at as date'
+        )
+        ->where('c.performanceGoal', $id)
+        ->get();
+
+        return response()->json($sql);
+    }
 }
