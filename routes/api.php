@@ -47,7 +47,7 @@ Route::middleware(['auth:sanctum', Responsible::class])
         Route::patch('/score/{id}/{score}/{evaluator}', [PerformanceGoalController::class, 'score']);
         Route::get('/aspects', [AspectController::class, 'index']);
         Route::get('/scorebyteacher', [PerformanceGoalController::class, 'scoreByTeacher']);
-        Route::post('/comment', [CommentController::class, 'store']);
+        Route::post('/comment/{goal}/{text}', [CommentController::class, 'comment']);
         Route::get('/teachers', [UserController::class, 'teachers']);
         Route::get('/document', [DocumentController::class, 'getDocumentum']);
     });

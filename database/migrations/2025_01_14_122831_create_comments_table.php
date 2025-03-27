@@ -15,13 +15,10 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('performanceGoal')->references('id')->on('performance_goals');
+            $table->foreignId('evaluator')->references('id')->on('users');
             $table->string('text');
             $table->timestamps();
         });
-        // Comment::create([
-        //     'performanceGoal' => 1,
-        //     'text' => 'jó'
-        // ]);
     }
 
 

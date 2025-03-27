@@ -96,7 +96,8 @@ class PerformanceGoalController extends Controller
         $insertData = $aspectItems->map(function ($aspectItemId) use ($teacherId) {
             return [
                 'teacher' => $teacherId,
-                'aspect_item' => $aspectItemId
+                'aspect_item' => $aspectItemId,
+                'created_at' => now()
             ];
         })->toArray();
 

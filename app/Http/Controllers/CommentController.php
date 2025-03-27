@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-use Illuminate\Container\Attributes\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -16,14 +16,15 @@ class CommentController extends Controller
         $record->save();
     }
 
-    /*public function comment(int $id, string $text)
+    public function comment(int $id, string $text)
     {
         $user = Auth::user();
         return DB::table('comments')
             ->insert([
-                'user' => $user->id,
+                'evaluator' => $user->id,
                 'performanceGoal' => $id,
-                'text' => $text
+                'text' => $text,
+                'created_at' => now()
             ]);
-    }*/
+    }
 }
