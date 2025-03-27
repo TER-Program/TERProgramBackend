@@ -31,6 +31,7 @@ class CommentController extends Controller
         $sql = DB::table('comments as c')
         ->join('users as u', 'c.evaluator', '=', 'u.id')
         ->select(
+            'evaluator',
             'u.name as name',
             'c.text as text',
             'c.created_at as date'
