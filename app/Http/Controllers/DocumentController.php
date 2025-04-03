@@ -20,7 +20,7 @@ class DocumentController extends Controller
         if (!$document) {
             return response()->json(['message' => 'Document not found'], 404);
         }
-        $filePath = public_path('storage/' . $document->document_path);
+        $filePath = storage_path('app/public/' . $document->document_path);
     
         if (file_exists($filePath)) {
             unlink($filePath);
@@ -40,7 +40,7 @@ class DocumentController extends Controller
         if ($request->hasFile('pdf') && $request->file('pdf')->isValid()) {
             $file = $request->file('pdf');
             $fileName = time() . '.' . $file->getClientOriginalExtension();
-            $filePath = $file->storeAs('documents', $fileName, 'public');
+            $filePath = $file->storeAs('documents', $fileName , 'public');
             $document = new Documents();
             $document->document_name = $file->getClientOriginalName();
             $document->document_path = $filePath;
@@ -79,13 +79,17 @@ class DocumentController extends Controller
     public function getDocumentFile($documentId)
     {
         $document = DB::table('documents')->where('id', $documentId)->first();
+        
         if (!$document) {
             return response()->json(['message' => 'Document not found'], 404);
         }
-        $path = public_path('storage/' . $document->document_path);
+    
+        $path = storage_path('app/public/' . $document->document_path);
+    
         if (!file_exists($path)) {
             return response()->json(['message' => 'File not found'], 404);
         }
+    
         return response()->download($path, $document->document_name);
     }
 }

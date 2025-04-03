@@ -32,7 +32,8 @@ return new class extends Migration
             'description' => 'Az adott tanévi kompetencia mérési eredményeket az azt megelőző mérési eredményeihez képest kell vizsgálni, amelyek elérhetők
                             az OH intézményi gyorsvisszajelző felületén. Ha az értékelt pedagógus több, mérési eredménnyel is rendelkező tanulócsoportban tanít,
                             csoportonként kell a fejlődést értékelni és ezek együttese alapján kell
-                                a pontszámot meghatározni.'
+                                a pontszámot meghatározni.',
+                'doc_required' => 1
         ]);
         AspectItem::create([
             'aspect' => '1',
