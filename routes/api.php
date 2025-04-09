@@ -16,7 +16,7 @@ use App\Models\PerformanceGoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/getcommentsbyid/{id}', [CommentController::class, 'getCommentById']);
+Route::get('/getcomments', [CommentController::class, 'getComments']);
 
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
 
