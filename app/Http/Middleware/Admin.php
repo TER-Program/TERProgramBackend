@@ -19,7 +19,7 @@ class Admin
         if (!Auth::check() || !(Auth::user()->role === 0)) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
-        return $next($request); //folytatódhat a kérés
+        return $next($request);
     }
 
 }

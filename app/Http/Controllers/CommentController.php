@@ -31,6 +31,7 @@ class CommentController extends Controller
         $sql = DB::table('comments as c')
         ->join('users as u', 'c.evaluator', '=', 'u.id')
         ->select(
+            'c.id',
             'performanceGoal',
             'evaluator',
             'u.name as name',
@@ -40,5 +41,12 @@ class CommentController extends Controller
         ->get();
 
         return response()->json($sql);
+    }
+
+    public function deleteComment($id)
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+        return response()->json(['message' => 'Komment sikeresen törölve!']);
     }
 }

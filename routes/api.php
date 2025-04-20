@@ -16,7 +16,7 @@ use App\Models\PerformanceGoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/getcomments', [CommentController::class, 'getComments']);
+
 
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
 
@@ -50,6 +50,7 @@ Route::middleware(['auth:sanctum', Responsible::class])
         Route::post('/comment/{goal}/{text}', [CommentController::class, 'comment']);
         Route::get('/teachers', [UserController::class, 'teachers']);
         Route::get('/document', [DocumentController::class, 'getDocumentum']);
+        Route::delete('/deletecomment/{id}', [CommentController::class, 'deleteComment']);
     });
 
 
@@ -63,5 +64,5 @@ Route::middleware(['auth:sanctum', Teacher::class])
         Route::get('/documentbyid/{id}', [DocumentController::class, 'getDocumentumById']);
         Route::get('/documents/{documentId}', [DocumentController::class, 'getDocumentFile']);
         Route::delete('/deletedocument/{id}' , [DocumentController::class, 'destroy']);
-      
+        Route::get('/getcomments', [CommentController::class, 'getComments']);
     });
