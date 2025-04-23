@@ -24,6 +24,7 @@ class PerformanceGoalController extends Controller
                 'performance_goals.id',
                 'performance_goals.score', // Pontszám
                 'performance_goals.scored', // Értékelés dátuma
+                'performance_goals.teacher as teacherId',
                 'aspect_items.name as aspect_name', // Szempont neve
                 'aspect_items.max_score', // Maximális pontszám
                 'teacher.name as teacher_name', // Tanár neve
