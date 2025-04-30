@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->post('/change-password', [UserController::class, 'changePassword']);
 
-Route::get('/allscoredgoals', [PerformanceGoalController::class, 'scoredGoals']);
+
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -39,6 +39,7 @@ Route::middleware(['auth:sanctum', Admin::class])
         Route::delete('/deleteUser/{id}', [UserController::class, 'destroy']);
         Route::post('/setRole/{id},{role}', [UserController::class, 'setRole']);
         Route::post('/performace_goals_fill/{id}', [PerformanceGoalController::class, 'performanceGoalFill']);
+        Route::get('/allscoredgoals', [PerformanceGoalController::class, 'scoredGoals']);
     });
 
 
