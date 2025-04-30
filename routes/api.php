@@ -16,8 +16,7 @@ use App\Models\PerformanceGoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/commentbyid/{id}', [CommentController::class, 'getCommentsById']);
+Route::put('/resetscore/{id}', [PerformanceGoalController::class, 'resetScoredGoal']);
 
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
 
@@ -52,6 +51,7 @@ Route::middleware(['auth:sanctum', Responsible::class])
         Route::get('/teachers', [UserController::class, 'teachers']);
         Route::get('/document', [DocumentController::class, 'getDocumentum']);
         Route::delete('/deletecomment/{id}', [CommentController::class, 'deleteComment']);
+        Route::get('/scoredgoals/{id}', [PerformanceGoalController::class, 'scoredGoals']);
     });
 
 
@@ -66,4 +66,6 @@ Route::middleware(['auth:sanctum', Teacher::class])
         Route::get('/documents/{documentId}', [DocumentController::class, 'getDocumentFile']);
         Route::delete('/deletedocument/{id}' , [DocumentController::class, 'destroy']);
         Route::get('/getcomments', [CommentController::class, 'getComments']);
+        Route::get('/commentbyid/{id}', [CommentController::class, 'getCommentsById']);
+        Route::get('/allscorebyteacher/{id}', [PerformanceGoalController::class, 'allScoreByTeacher']);
     });

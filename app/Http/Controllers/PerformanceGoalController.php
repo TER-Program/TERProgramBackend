@@ -14,23 +14,24 @@ class PerformanceGoalController extends Controller
     {
         return PerformanceGoal::all();
     }
-    public function getPerfomanceGoals() {
+    public function getPerfomanceGoals()
+    {
         // Lekérdezés a három táblával
         $results = DB::table('performance_goals')
-            ->join('aspect_items', 'performance_goals.aspect_item', '=', 'aspect_items.id') // INNER JOIN aspect_items
-            ->join('users as teacher', 'performance_goals.teacher', '=', 'teacher.id') // INNER JOIN users for teacher
-    
+            ->join('aspect_items', 'performance_goals.aspect_item', '=', 'aspect_items.id')
+            ->join('users as teacher', 'performance_goals.teacher', '=', 'teacher.id')
+
             ->select(
                 'performance_goals.id',
-                'performance_goals.score', // Pontszám
-                'performance_goals.scored', // Értékelés dátuma
+                'performance_goals.score',
+                'performance_goals.scored',
                 'performance_goals.teacher as teacherId',
-                'aspect_items.name as aspect_name', // Szempont neve
-                'aspect_items.max_score', // Maximális pontszám
-                'teacher.name as teacher_name', // Tanár neve
+                'aspect_items.name as aspect_name',
+                'aspect_items.max_score',
+                'teacher.name as teacher_name',
             )
             ->get();
-    
+
         // Válasz visszaadása JSON formátumban
         return response()->json($results);
     }
@@ -42,17 +43,19 @@ class PerformanceGoalController extends Controller
         $record->save();
     }
 
-    public function getGoals(){
+    public function getGoals()
+    {
         $user = Auth::user();
         $userId = $user->id;
-        $goals= DB::table('performance_goals as u')
-        ->select('*')
-        ->where('teacher', $userId)
-        ->get();
+        $goals = DB::table('performance_goals as u')
+            ->select('*')
+            ->where('teacher', $userId)
+            ->get();
         return response()->json($goals);
     }
 
-    public function getGoalsById(string $id) {
+    public function getGoalsById(string $id)
+    {
         $goals = DB::table('performance_goals as pg')
             ->join('users as u', 'pg.teacher', '=', 'u.id')
             ->join('aspect_items as ai', 'pg.aspect_item', '=', 'ai.id')
@@ -72,17 +75,19 @@ class PerformanceGoalController extends Controller
         return response()->json($goals);
     }
 
-    public function score(string $id, int $score, int $evaluator) {
+    public function score(string $id, int $score, int $evaluator)
+    {
         return DB::table('performance_goals')
             ->where('id', '=', $id)
             ->update([
-                'score' => $score,  
+                'score' => $score,
                 'evaluator' => $evaluator,
                 'scored' => now()
-        ]);
+            ]);
     }
 
-    public function scoreByTeacher() {
+    public function scoreByTeacher()
+    {
         $result = DB::table('users')
             ->leftJoin('performance_goals', 'performance_goals.teacher', '=', 'users.id')
             ->where('users.role', 2)
@@ -92,7 +97,8 @@ class PerformanceGoalController extends Controller
 
         return response()->json($result);
     }
-    public function performanceGoalFill(int $teacherId ) {
+    public function performanceGoalFill(int $teacherId)
+    {
         $aspectItems = DB::table('aspect_items')->pluck('id');
         $insertData = $aspectItems->map(function ($aspectItemId) use ($teacherId) {
             return [
@@ -105,4 +111,52 @@ class PerformanceGoalController extends Controller
         DB::table('performance_goals')->insert($insertData);
     }
 
+    public function allScoreByTeacher($teacherId)
+    {
+        $results = DB::table('performance_goals as p')
+            ->join('users as u', 'p.teacher', '=', 'u.id')
+            ->select(DB::raw('SUM(score) as score_count'), 'u.name')
+            ->where('u.id', $teacherId)
+            ->groupBy('u.name')
+            ->get();
+        return response()->json($results);
+    }
+
+    public function scoredGoals($id)
+    {
+        $goals = DB::table('performance_goals as pg')
+            ->join('users as u', 'pg.teacher', '=', 'u.id')
+            ->join('aspect_items as ai', 'pg.aspect_item', '=', 'ai.id')
+            ->where('evaluator', $id)
+            ->whereNotNull('scored')
+            ->select(
+                'pg.*',
+                'u.name as teacher_name',
+                'u.email as teacher_email',
+                'u.role as teacher_role',
+                'ai.name as aspect_name',
+                'ai.description as aspect_description',
+                'ai.max_score',
+                'ai.doc_required'
+            )
+            ->get();
+        return response()->json($goals);
+    }
+
+    public function resetScoredGoal($id)
+    {
+        try {
+            DB::table('performance_goals')
+                ->where('id', $id)
+                ->update([
+                    'score' => 0,
+                    'scored' => null,
+                    'evaluator' => null,
+                ]);
+
+            return response()->json(['message' => 'Cél nullázása sikeres.']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Hiba történt: ' . $e->getMessage()], 500);
+        }
+    }
 }
