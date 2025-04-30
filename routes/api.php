@@ -40,6 +40,7 @@ Route::middleware(['auth:sanctum', Admin::class])
         Route::post('/setRole/{id},{role}', [UserController::class, 'setRole']);
         Route::post('/performace_goals_fill/{id}', [PerformanceGoalController::class, 'performanceGoalFill']);
         Route::get('/allscoredgoals', [PerformanceGoalController::class, 'scoredGoals']);
+        Route::delete('/deletedocument/{id}', [DocumentController::class, 'destroy']);
     });
 
 
@@ -67,7 +68,7 @@ Route::middleware(['auth:sanctum', Teacher::class])
         Route::post('/upload-pdf', [DocumentController::class, 'store']);
         Route::get('/documentbyid/{id}', [DocumentController::class, 'getDocumentumById']);
         Route::get('/documents/{documentId}', [DocumentController::class, 'getDocumentFile']);
-        Route::delete('/deletedocument/{id}', [DocumentController::class, 'destroy']);
+
         Route::get('/getcomments', [CommentController::class, 'getComments']);
         Route::get('/commentbyid/{id}', [CommentController::class, 'getCommentsById']);
         Route::get('/allscorebyteacher/{id}', [PerformanceGoalController::class, 'allScoreByTeacher']);
