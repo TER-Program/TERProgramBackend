@@ -122,16 +122,18 @@ class PerformanceGoalController extends Controller
         return response()->json($results);
     }
 
-    public function scoredGoals($id)
+    public function scoredGoalsById($id)
     {
         $goals = DB::table('performance_goals as pg')
             ->join('users as u', 'pg.teacher', '=', 'u.id')
+            ->join('users as u2', 'pg.evaluator', '=', 'u2.id')
             ->join('aspect_items as ai', 'pg.aspect_item', '=', 'ai.id')
             ->where('evaluator', $id)
             ->whereNotNull('scored')
             ->select(
                 'pg.*',
                 'u.name as teacher_name',
+                'u2.name as evaluator_name',
                 'u.email as teacher_email',
                 'u.role as teacher_role',
                 'ai.name as aspect_name',
@@ -158,5 +160,27 @@ class PerformanceGoalController extends Controller
         } catch (\Exception $e) {
             return response()->json(['error' => 'Hiba történt: ' . $e->getMessage()], 500);
         }
+    }
+
+    public function scoredGoals()
+    {
+        $goals = DB::table('performance_goals as pg')
+            ->join('users as u', 'pg.teacher', '=', 'u.id')
+            ->join('users as u2', 'pg.evaluator', '=', 'u2.id')
+            ->join('aspect_items as ai', 'pg.aspect_item', '=', 'ai.id')
+            ->whereNotNull('scored')
+            ->select(
+                'pg.*',
+                'u2.name as evaluator_name',
+                'u.name as teacher_name',
+                'u.email as teacher_email',
+                'u.role as teacher_role',
+                'ai.name as aspect_name',
+                'ai.description as aspect_description',
+                'ai.max_score',
+                'ai.doc_required'
+            )
+            ->get();
+        return response()->json($goals);
     }
 }

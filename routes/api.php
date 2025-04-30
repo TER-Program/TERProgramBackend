@@ -16,8 +16,8 @@ use App\Models\PerformanceGoal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::put('/resetscore/{id}', [PerformanceGoalController::class, 'resetScoredGoal']);
 
+Route::get('/allscoredgoals', [PerformanceGoalController::class, 'scoredGoals']);
 Route::get('/aspectItem', [AspectItemController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
@@ -51,7 +51,8 @@ Route::middleware(['auth:sanctum', Responsible::class])
         Route::get('/teachers', [UserController::class, 'teachers']);
         Route::get('/document', [DocumentController::class, 'getDocumentum']);
         Route::delete('/deletecomment/{id}', [CommentController::class, 'deleteComment']);
-        Route::get('/scoredgoals/{id}', [PerformanceGoalController::class, 'scoredGoals']);
+        Route::get('/scoredgoals/{id}', [PerformanceGoalController::class, 'scoredGoalsById']);
+        Route::put('/resetscore/{id}', [PerformanceGoalController::class, 'resetScoredGoal']);
     });
 
 
