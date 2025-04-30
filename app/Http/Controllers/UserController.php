@@ -61,11 +61,30 @@ class UserController extends Controller
         User::find($id)->delete();
     }
 
-    public function teachers(){
+    public function teachers()
+    {
         $teacher = DB::table('users')
-        ->select('*')
-        ->where('role','=', '2')
-        ->get();
+            ->select('*')
+            ->where('role', '=', '2')
+            ->get();
         return response()->json($teacher);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ]);
+
+        $user = $request->user();
+
+        if (!Hash::check($request->current_password, $user->password)) {
+            return response()->json(['message' => 'A jelenlegi jelszó hibás.'], 422);
+        }
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return response()->json(['message' => 'Jelszó sikeresen frissítve.']);
     }
 }
